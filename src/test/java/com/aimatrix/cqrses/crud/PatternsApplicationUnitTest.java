@@ -24,7 +24,8 @@ public class PatternsApplicationUnitTest {
     @Test
     public void givenCRUDApplication_whenDataCreated_thenDataCanBeFetched() throws Exception {
         UserService service = new UserService(repository);
-        String userId = UUID.randomUUID().toString();
+        String userId = UUID.randomUUID()
+            .toString();
 
         service.createUser(userId, "Tom", "Sawyer");
         service.updateUser(userId,
@@ -50,11 +51,13 @@ public class PatternsApplicationUnitTest {
             ).collect(Collectors.toSet()));
 
         Assertions.assertEquals(
-            Stream.of(new Contact("EMAIL", "tom.sawyer@gmail.com")).collect(Collectors.toSet()),
+            Stream.of(new Contact("EMAIL", "tom.sawyer@gmail.com"))
+                .collect(Collectors.toSet()),
             service.getContactByType(userId, "EMAIL")
         );
         Assertions.assertEquals(
-            Stream.of(new Address("New York", "NY", "10001")).collect(Collectors.toSet()),
+            Stream.of(new Address("New York", "NY", "10001"))
+                .collect(Collectors.toSet()),
             service.getAddressByRegion(userId, "NY")
         );
     }

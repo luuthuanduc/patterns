@@ -36,7 +36,8 @@ public class UserService {
             throw new Exception("User does not exit.");
         Set<Contact> contacts = user.getContacts();
         return contacts.stream()
-            .filter(contact -> contact.getType().equals(contactType))
+            .filter(contact -> contact.getType()
+                .equals(contactType))
             .collect(Collectors.toSet());
     }
 
@@ -46,7 +47,8 @@ public class UserService {
             throw new Exception("User does not exist.");
         Set<Address> addresses = user.getAddresses();
         return addresses.stream()
-            .filter(address -> address.getState().equals(state))
+            .filter(address -> address.getState()
+                .equals(state))
             .collect(Collectors.toSet());
     }
 
